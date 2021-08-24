@@ -1,0 +1,57 @@
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <title>Proveedores</title>
+</head>
+<body>
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col" class="col-2" id = "id">ID</th>
+            <th scope="col" class="col-5" id = "nombre">Nombre </th>
+            <th scope="col" class="col-5" id = "contacto">Contacto</th>
+          </tr>
+        </thead>
+      </table>
+        <tbody  id="tablebodylol">
+          <script>
+            const axios = require('axios');
+            let userId = 1;
+            let url = 'https://gist.githubusercontent.com/josejbocanegra/d3b26f97573a823a9d0df4ec68fef45f/raw/66440575649e007a9770bcd480badcbbc6a41ba7/proveedores.json'
+
+            console.log("loading");
+
+            axios.get(url)
+              .then(function (response) {
+                let json = response.data;
+
+                let tableText = "";
+                json.data.forEach((user) => {
+                    tableText += "<tr>";
+                    tableText += "<td>"+user.idproveedor+"</td>";
+                    tableText += "<td>"+user.nombrecompania+"</td>";
+                    tableText += "<td>"+user.nombrecontacto+"</td>";
+                    tableText += "</tr>";
+                    console.log(user);
+                });
+
+                document.getElementById('tablebodylol').innerHTML = tableText;
+              })
+              .catch(function (error) {
+                console.log(error);
+              })
+              .finally(function () {
+                // always executed
+              });
+        
+        </script>
+          
+        </tbody>
+   
+</body>
+</html>

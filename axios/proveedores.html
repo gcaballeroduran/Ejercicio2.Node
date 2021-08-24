@@ -17,41 +17,10 @@
             <th scope="col" class="col-5" id = "contacto">Contacto</th>
           </tr>
         </thead>
-      </table>
-        <tbody  id="tablebodylol">
-          <script>
-            const axios = require('axios');
-            let userId = 1;
-            let url = 'https://gist.githubusercontent.com/josejbocanegra/d3b26f97573a823a9d0df4ec68fef45f/raw/66440575649e007a9770bcd480badcbbc6a41ba7/proveedores.json'
-
-            console.log("loading");
-
-            axios.get(url)
-              .then(function (response) {
-                let json = response.data;
-
-                let tableText = "";
-                json.data.forEach((user) => {
-                    tableText += "<tr>";
-                    tableText += "<td>"+user.idproveedor+"</td>";
-                    tableText += "<td>"+user.nombrecompania+"</td>";
-                    tableText += "<td>"+user.nombrecontacto+"</td>";
-                    tableText += "</tr>";
-                    console.log(user);
-                });
-
-                document.getElementById('tablebodylol').innerHTML = tableText;
-              })
-              .catch(function (error) {
-                console.log(error);
-              })
-              .finally(function () {
-                // always executed
-              });
-        
-        </script>
+        <tbody>
+          
           
         </tbody>
-   
+    </table>
 </body>
 </html>
